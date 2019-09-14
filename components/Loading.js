@@ -8,10 +8,6 @@ const messagePostfixes = ["", ".", "..", "..."];
 
 class Loading extends Component {
   
-  componentDidMount = () => {
-    console.log('hola')
-  }
-
   render() {
     return (
       <View style={styles.locationContainer}>

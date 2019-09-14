@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { weatherConditions } from "../utils/weatherConditions";
 
-const Weather = () => {
+const Weather = ({ imageUrl, weather }) => {
+  console.log(weather);
   return (
     <ImageBackground
       source={{
-        uri:
-          "https://cdn.pixabay.com/photo/2016/11/29/13/20/acoustic-guitar-1869787_960_720.jpg"
+        uri: imageUrl
       }}
       style={{ width: "100%", height: "100%" }}
     >
@@ -18,12 +19,12 @@ const Weather = () => {
         ]}
       >
         <View style={styles.headerContainer}>
-          <MaterialCommunityIcons size={72} name={"cloud"} color={"#fff"} />
-          <Text style={styles.tempText}>45°</Text>
+          <MaterialCommunityIcons size={72} name={weatherConditions[weather.weather[0].main].icon} color={"#fff"} />
+          <Text style={styles.tempText}>{weather.main.temp}°</Text>
         </View>
         <View style={styles.bodyContainer}>
-          <Text style={styles.title}>Test</Text>
-          <Text style={styles.subtitle}>Testing</Text>
+          <Text style={styles.title}>{weatherConditions[weather.weather[0].main].title}</Text>
+          <Text style={styles.subtitle}>{weatherConditions[weather.weather[0].main].subtitle}</Text>
         </View>
       </View>
     </ImageBackground>
